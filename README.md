@@ -1,32 +1,87 @@
-# SkillFinder – Internship Finder
+SkillFinder – Internship Finder
 
-## About the Project
-SkillFinder is a frontend-based internship finder website designed to help students explore internship opportunities based on their skills and interests.
+A frontend-based web application designed to help students explore internship opportunities based on their skills and interests.
 
-## Features
-- Home page
-- Internship listings
-- Skills section
-- Login and registration pages
-- User profile page
-- Admin login page
-- Responsive user interface
+Features
 
-## Technologies Used
-- HTML
-- CSS
-- JavaScript
+Student Side
 
-## Project Structure
-- templates/ – HTML pages
-- static/ – CSS files and images
-- settings.json – Project settings
+Explore internship opportunities
 
-## Project Status
+Browse available internships
+
+View skills and career-related information
+
+User registration
+
+User login
+
+Manage user profile
+
+Admin Side
+
+Admin login page
+
+Tech Stack
+
+Frontend: HTML, CSS, JavaScript
+
+Project Structure
+
+SkillFinder-Internship-Finder/
+├── templates/
+│   ├── about.html
+│   ├── admin.html
+│   ├── for.html
+│   ├── hj.html
+│   ├── index.html
+│   ├── internship.html
+│   ├── login.html
+│   ├── profile.html
+│   ├── register.html
+│   ├── sampleeeee.html
+│   └── skills.html
+├── static/
+│   ├── 1.png
+│   ├── login.css
+│   ├── register.css
+│   └── style.css
+└── settings.json
+
+Getting Started
+
+Prerequisites
+
+Web browser
+
+Visual Studio Code
+
+Run the Project
+
+Download or clone the repository.
+
+Open the project folder in Visual Studio Code.
+
+Open the HTML files using a local server or suitable browser setup.
+
+Project Objective
+
+To provide students with a simple platform to explore internship opportunities and learn about skills relevant to their career goals.
+
+Project Status
+
 Frontend development completed. Backend integration is not yet implemented.
 
-## Developer
-Priyanka M
+Future Improvements
 
-## GitHub Repository
-https://github.com/PriyankaM2006/SkillFinder-Internship-Finder
+Backend integration using Python and Django
+
+Database connectivity
+
+Real-time internship listings
+
+Student and admin dashboard functionality
+
+Author
+
+Priyanka M LinkedIn
