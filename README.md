@@ -4,24 +4,30 @@ A frontend-based web application designed to help students explore internship op
 
 ## Features
 
-**Student Side**
+### Student Side
 - Explore internship opportunities
 - Browse available internships
 - View skills and career-related information
-- User registration
-- User login
+- User registration and login
 - Manage user profile
 
-**Admin Side**
+### Admin Side
 - Admin login page
 
 ## Tech Stack
-
-Frontend: HTML, CSS, JavaScript
+- Frontend: HTML, CSS, JavaScript
 
 ## Project Structure
 
+```text
 SkillFinder-Internship-Finder/
+│
+├── static/
+│   ├── 1.png
+│   ├── login.css
+│   ├── register.css
+│   └── style.css
+│
 ├── templates/
 │   ├── about.html
 │   ├── admin.html
@@ -34,42 +40,40 @@ SkillFinder-Internship-Finder/
 │   ├── register.html
 │   ├── sampleeeee.html
 │   └── skills.html
-├── static/
-│   ├── 1.png
-│   ├── login.css
-│   ├── register.css
-│   └── style.css
-└── settings.json
+│
+├── settings.json
+└── README.md
+```
 
 ## Getting Started
 
-**Prerequisites**
-- Web browser
+### Prerequisites
+- Python (if using a Flask/Jinja setup)
 - Visual Studio Code
+- Web Browser
 
-**Run the Project**
-1. Download or clone the repository.
+### Run the Project
+1. Clone the repository.
 2. Open the project folder in Visual Studio Code.
-3. Open the HTML files using a local server or suitable browser setup.
+3. Run the project using the appropriate local development setup.
 
 ## Project Objective
 
-To provide students with a simple platform to explore internship opportunities and learn about skills relevant to their career goals.
+To help students discover internship opportunities and explore career-related skills through a simple and user-friendly website.
 
 ## Project Status
 
 Frontend development completed. Backend integration is not yet implemented.
 
 ## Future Improvements
-- Backend integration using Python and Django
+- Backend integration
 - Database connectivity
 - Real-time internship listings
 - Student and admin dashboard functionality
 
 ## Author
 
-Priyanka M
+**Priyanka M**
 
-## GitHub Repository
+LinkedIn: https://www.linkedin.com/in/05priyanka/
 
-https://github.com/PriyankaM2006/SkillFinder-Internship-Finder
