@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | SkillFinder</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f6fa;
+    color: #252b36;
+    overflow-x: hidden;
+    padding-top: 60px;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    min-height: 70px;
+    padding: 0 5%;
+    background: linear-gradient(110deg, #e40d9c, #f5dd07);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: fixed;
+    z-index: 1000;
+    top:0;
+    left:0;
+
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #111;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-right: 20px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #222;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-buttons {
+    margin-left: auto;
+}
+
+.logout {
+    text-decoration: none;
+    color: #111;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 9px 22px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.logout:hover {
+    background: #f7296e;
+    border-color: #f7296e;
+}
+
+.menu {
+    display: none;
+    border: none;
+    background: transparent;
+    font-size: 27px;
+    cursor: pointer;
+    color: #111;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+/* Dashboard */
+.dashboard {
+    max-width: 1400px;
+    margin: auto;
+    padding: 32px 5%;
+}
+
+.welcome {
+    margin-bottom: 28px;
+}
+
+.welcome h1 {
+    font-size: 28px;
+    margin-bottom: 9px;
+}
+
+.welcome p {
+    color: #737b89;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Statistics */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #e6e9ef;
+    border-radius: 8px;
+    padding: 23px;
+}
+
+.stat-card .label {
+    color: #737b89;
+    font-size: 14px;
+    margin-bottom: 14px;
+}
+
+.stat-card h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #243b5a;
+}
+
+.stat-card small {
+    color: #687384;
+    font-size: 12px;
+}
+
+/* Sections */
+.section {
+    background: white;
+    border: 1px solid #e6e9ef;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 25px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.section-heading h2 {
+    font-size: 20px;
+}
+
+.add-btn {
+    background: #f7296e;
+    color: white;
+    text-decoration: none;
+    padding: 11px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.search-box {
+    width: 100%;
+    max-width: 330px;
+    padding: 11px 13px;
+    border: 1px solid #dce1e9;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    margin-bottom: 18px;
+}
+
+.search-box:focus {
+    border-color: #526b91;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px 12px;
+    border-bottom: 1px solid #edf0f4;
+    font-size: 14px;
+}
+
+th {
+    background: #f7f8fb;
+    color: #596273;
+    font-weight: 600;
+}
+
+td {
+    color: #3b4350;
+}
+
+.status {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.active {
+    background: #e6f6eb;
+    color: #247642;
+}
+
+.pending {
+    background: #fff3d8;
+    color: #98640b;
+}
+
+.closed {
+    background: #fce8e8;
+    color: #b52b35;
+}
+
+.actions a {
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 13px;
+}
+
+.edit {
+    color: #2468bd;
+}
+
+.delete {
+    color: #cf3346;
+}
+
+.empty {
+    text-align: center;
+    color: #737b89;
+    padding: 25px;
+}
+
+.bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+/* Activity */
+.activity {
+    display: flex;
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.activity:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #f1f3f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.activity p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.activity small {
+    display: block;
+    color: #858c99;
+    margin-top: 4px;
+}
+
+/* Quick links */
+.quick-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.quick-links a {
+    text-decoration: none;
+    padding: 16px;
+    border: 1px solid #e3e7ee;
+    border-radius: 6px;
+    color: #354968;
+    font-size: 14px;
+    font-weight: 600;
+    background: #fafbfc;
+}
+
+.quick-links a:hover {
+    background: #f0f3f8;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #243b5a;
+    color: white;
+    font-size: 13px;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .navbar {
+        gap: 18px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+}
+
+/* Mobile Navbar */
+@media (max-width: 768px) {
+    .navbar {
+        min-height: 60px;
+        padding: 0 15px;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 20px;
+        margin-right: 0;
+    }
+
+    .nav-buttons {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 14px;
+    }
+
+    .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        padding: 12px 18px;
+        gap: 8px;
+    }
+
+    .mobile-menu a {
+        text-align: center;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        color: #222;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .dashboard {
+        padding: 25px 4%;
+    }
+
+    .bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 18px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .welcome h1 {
+        font-size: 25px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .quick-links {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo">SKILLFINDER</a>
+
+    <ul class="nav-links" id="navLinks">
+        <!-- <li><a href="index.html">Home</a></li> -->
+        <!-- <li><a href="internship.html">Internships</a></li>
+        <li><a href="skills.html">Skills</a></li> -->
+        
+
+        <div class="mobile-menu">
+            <a href="admin_login.html"
+               onclick="return confirm('Are you sure you want to logout?')">
+                Logout
+            </a>
+        </div>
+    </ul>
+
+    <div class="nav-buttons">
+        <a href="admin_login.html" class="logout"
+           onclick="return confirm('Are you sure you want to logout?')">
+            Logout
+        </a>
+    </div>
+
+    <button class="menu" id="menuToggle"
+            type="button" onclick="menuOpen()"
+            aria-label="Toggle navigation"
+            aria-expanded="false">
+        ☰
+    </button>
+
+</nav>
+
+<main class="dashboard">
+
+    <div class="welcome">
+        <h1>Admin Dashboard</h1>
+        <p>Welcome back, Admin. Here's an overview of your SkillFinder platform.</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <p class="label">Registered Students</p>
+            <h2 id="studentCount">120</h2>
+            <small>Total student accounts</small>
+        </div>
+
+        <div class="stat-card">
+            <p class="label">Total Internships</p>
+            <h2 id="internshipCount">4</h2>
+            <small>Listed on the platform</small>
+        </div>
+
+        <div class="stat-card">
+            <p class="label">Registered Employers</p>
+            <h2 id="employerCount">18</h2>
+            <small>Company accounts</small>
+        </div>
+
+        <div class="stat-card">
+            <p class="label">Applications</p>
+            <h2 id="applicationCount">248</h2>
+            <small>Total applications received</small>
+        </div>
+    </div>
+
+    <section class="section" id="internships">
+        <div class="section-heading">
+            <h2>Recent Internships</h2>
+            <a href="add_internship.html" class="add-btn">
+                + Add Internship
+            </a>
+        </div>
+
+        <input type="text" id="searchInput" class="search-box"
+               placeholder="Search internship or company...">
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Internship</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="internshipTable">
+                    <tr>
+                        <td>01</td>
+                        <td>Web Development</td>
+                        <td>ABC Technologies</td>
+                        <td>Chennai</td>
+                        <td><span class="status active">Active</span></td>
+                        <td class="actions">
+                            <a href="edit_internship.html" class="edit">Edit</a>
+                            <a href="#" class="delete"
+                               onclick="return deleteRow(this)">Delete</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>02</td>
+                        <td>Python Developer</td>
+                        <td>XYZ Solutions</td>
+                        <td>Coimbatore</td>
+                        <td><span class="status active">Active</span></td>
+                        <td class="actions">
+                            <a href="edit_internship.html" class="edit">Edit</a>
+                            <a href="#" class="delete"
+                               onclick="return deleteRow(this)">Delete</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>03</td>
+                        <td>UI/UX Design</td>
+                        <td>Creative Studio</td>
+                        <td>Bengaluru</td>
+                        <td><span class="status pending">Pending</span></td>
+                        <td class="actions">
+                            <a href="edit_internship.html" class="edit">Edit</a>
+                            <a href="#" class="delete"
+                               onclick="return deleteRow(this)">Delete</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>04</td>
+                        <td>Data Analyst</td>
+                        <td>Bright Data</td>
+                        <td>Remote</td>
+                        <td><span class="status closed">Closed</span></td>
+                        <td class="actions">
+                            <a href="edit_internship.html" class="edit">Edit</a>
+                            <a href="#" class="delete"
+                               onclick="return deleteRow(this)">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p id="emptyMessage" class="empty" hidden>
+                No matching internships found.
+            </p>
+        </div>
+    </section>
+
+    <div class="bottom-grid">
+
+        <section class="section">
+            <div class="section-heading">
+                <h2>Recent Activity</h2>
+            </div>
+
+            <div class="activity">
+                <div class="activity-icon">👤</div>
+                <div>
+                    <p><strong>New student registered</strong></p>
+                    <small>Student account activity</small>
+                </div>
+            </div>
+
+            <div class="activity">
+                <div class="activity-icon">💼</div>
+                <div>
+                    <p><strong>Internship listing added</strong></p>
+                    <small>Internship management</small>
+                </div>
+            </div>
+
+            <div class="activity">
+                <div class="activity-icon">🏢</div>
+                <div>
+                    <p><strong>Employer account created</strong></p>
+                    <small>Employer management</small>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading">
+                <h2>Quick Management</h2>
+            </div>
+
+            <div class="quick-links">
+                <a href="students.html">View Students</a>
+                <!-- <a href="employers.html">View Employers</a> -->
+                <a href="internship.html">Manage Internships</a>
+                <a href="skills.html">Manage Skills</a>
+                <!-- <a href="courses.html">Manage Courses</a> -->
+                <a href="reports.html">View Reports</a>
+            </div>
+        </section>
+
+    </div>
+
+</main>
+
+<footer class="footer">
+    <p>&copy; 2026 SkillFinder. All rights reserved.</p>
+</footer>
+
+<script>
+function menuOpen() {
+    const navLinks = document.getElementById("navLinks");
+    const menu = document.getElementById("menuToggle");
+
+    navLinks.classList.toggle("show");
+
+    const isOpen = navLinks.classList.contains("show");
+    menu.textContent = isOpen ? "✕" : "☰";
+    menu.setAttribute("aria-expanded", isOpen);
+}
+
+document.querySelectorAll("#navLinks a").forEach(function(link) {
+    link.addEventListener("click", function() {
+        document.getElementById("navLinks").classList.remove("show");
+
+        const menu = document.getElementById("menuToggle");
+        menu.textContent = "☰";
+        menu.setAttribute("aria-expanded", "false");
+    });
+});
+
+document.getElementById("searchInput").addEventListener("input", function() {
+    const searchText = this.value.toLowerCase().trim();
+    const rows = document.querySelectorAll("#internshipTable tr");
+    let visibleCount = 0;
+
+    rows.forEach(function(row) {
+        const text = row.textContent.toLowerCase();
+        const match = text.includes(searchText);
+
+        row.style.display = match ? "" : "none";
+
+        if (match) {
+            visibleCount++;
+        }
+    });
+
+    document.getElementById("emptyMessage").hidden = visibleCount !== 0;
+});
+
+function updateInternshipCount() {
+    document.getElementById("internshipCount").textContent =
+        document.querySelectorAll("#internshipTable tr").length;
+}
+
+function deleteRow(link) {
+    if (confirm("Are you sure you want to delete this internship?")) {
+        link.closest("tr").remove();
+        updateInternshipCount();
+
+        document.getElementById("searchInput").dispatchEvent(
+            new Event("input")
+        );
+    }
+
+    return false;
+}
+</script>
+
+</body>
+</html>

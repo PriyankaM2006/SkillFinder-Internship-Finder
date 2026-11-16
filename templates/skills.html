@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillFinder - Skills</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f8fc;
+    color: #29283b;
+    
+}
+
+/* Navbar */
+     .navbar {
+            width: 100%;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            background: linear-gradient(110deg, #e40d9c, #f5dd07);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #111;
+            text-decoration: none;
+            margin-right: 50px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #222;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a.active {
+            color: white;
+        }
+
+        .login,
+        .register {
+            display: inline-block;
+            padding: 9px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+      .login{
+    margin-left:20px;
+    padding:9px 25px;
+    border:1px solid #071b24;
+    border-radius:5px;
+    color:#111;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.register{
+    margin-left:15px;
+    padding:10px 25px;
+    background:#f7296e;
+    color:#111;
+    border-radius:5px;
+    text-decoration:none;
+    font-weight:bold;
+}
+        .menu {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #111;
+            padding: 5px;
+            line-height: 1;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+
+/* Hero */
+.hero {
+    margin-top: 10px;
+    text-align: center;
+    padding: 65px 20px;
+    background: linear-gradient(110deg, #fce7f5, #fff9d9);
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    background: linear-gradient(110deg, #e40d9c, #a58b00);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* Skills section */
+.section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 25px 22px 55px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.section-heading h2,
+.career-content h2 {
+    font-size: 27px;
+}
+
+.section-heading p,
+.career-content > p {
+    color: #777;
+    margin-top: 8px;
+    line-height: 1.7;
+}
+
+.skill-count {
+    color: #777;
+    font-size: 14px;
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.category-btn {
+    border: 1px solid #e3e3e9;
+    background: white;
+    padding: 11px 17px;
+    border-radius: 25px;
+    cursor: pointer;
+    color: #555;
+}
+
+.category-btn.active,
+.category-btn:hover {
+    background: #e40d9c;
+    color: white;
+    border-color: #e40d9c;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.skill-card {
+    background: white;
+    border: 1px solid #ececf2;
+    border-radius: 14px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    transition: 0.25s;
+}
+
+.skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px #0000000c;
+}
+
+.skill-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    background: #fce7f5;
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+
+.skill-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.skill-card p {
+    font-size: 14px;
+    color: #696978;
+    line-height: 1.8;
+    margin-bottom: 17px;
+}
+
+.level {
+    width: fit-content;
+    padding: 7px 10px;
+    border-radius: 5px;
+    background: #f1f1f8;
+    color: #555;
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+.learn-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 22px;
+}
+
+.topics span {
+    background: #f7f7fa;
+    border: 1px solid #ededf2;
+    border-radius: 5px;
+    padding: 7px 9px;
+    font-size: 12px;
+    color: #555;
+}
+
+.skill-link,
+.cta a {
+    display: block;
+    text-align: center;
+    margin-top: auto;
+    font-size: 14px;
+    background: linear-gradient(110deg, #e40d9c, #c6a900);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 7px;
+    text-decoration: none;
+}
+
+.empty-state {
+    display: none;
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 45px 15px;
+    color: #777;
+}
+
+/* Career paths */
+.career-section {
+    background: white;
+    padding: 55px 22px;
+}
+
+.career-content {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.career-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.career-item {
+    padding: 23px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    background: #fdfcff;
+}
+
+.career-item h3 {
+    margin-bottom: 10px;
+}
+
+.career-item p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.career-item a {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #e40d9c;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Call to action */
+.cta {
+    margin: 45px auto;
+    max-width: 1100px;
+    padding: 42px 25px;
+    text-align: center;
+    border-radius: 15px;
+    background: linear-gradient(110deg, #fce7f5, #fff9db);
+}
+
+.cta h2 {
+    margin-bottom: 12px;
+}
+
+.cta p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 22px;
+}
+
+.cta a {
+    display: inline-block;
+    margin-top: 0;
+}
+
+footer {
+    background: #242235;
+    color: #d2d0dd;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .logo {
+        margin-right: 25px;
+        font-size: 23px;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .login {
+        margin-left: 10px;
+        padding: 9px 16px;
+    }
+
+    .register {
+        margin-left: 8px;
+        padding: 10px 16px;
+    }
+
+    .skills-grid,
+    .career-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile navbar */
+@media (max-width: 768px) {
+    .navbar {
+        height: 60px;
+        padding: 0 15px;
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .nav-buttons {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0;
+        margin: 0;
+        box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .nav-links li > a {
+        display: block;
+        width: 100%;
+        padding: 14px 10px;
+        color: #333;
+        font-size: 14px;
+    }
+
+    .nav-links li > a:hover {
+        background: #f5f5f5;
+        color: #e40d9c;
+    }
+
+    .nav-links .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+        padding: 12px 18px 15px;
+        border-bottom: none;
+    }
+
+    .mobile-menu a {
+        border-radius: 6px;
+        padding: 13px;
+    }
+
+    .mobile-menu .mobile-login {
+        border: 1px solid #071b24;
+        color: #071b24;
+    }
+
+    .mobile-menu .mobile-register {
+        background: #f7296e;
+        color: #111;
+    }
+
+    .hero {
+        padding: 48px 18px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 25px 16px 45px;
+    }
+
+    .career-section {
+        padding: 40px 16px;
+    }
+
+    .cta {
+        margin: 30px 16px;
+        padding: 32px 18px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 550px) {
+    .skills-grid,
+    .career-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .section-heading h2,
+    .career-content h2 {
+        font-size: 24px;
+    }
+
+    .category-btn {
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+    .cta h2 {
+        font-size: 23px;
+    }
+
+    .skill-card {
+        padding: 22px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="logo">SKILLFINDER</a>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="internship.html">Internships ▾</a></li>
+        <li><a href="skills.html">Skills ▾</a></li>
+       
+
+        <li class="mobile-menu">
+            <a href="login.html" class="mobile-login">Login</a>
+            <a href="register.html" class="mobile-register">Register</a>
+        </li>
+    </ul>
+
+    <div class="nav-buttons">
+        <a href="login.html" class="login">Login</a>
+        <a href="register.html" class="register">Register</a>
+    </div>
+
+    <button class="menu" id="menuToggle" type="button"
+            onclick="menuOpen()" aria-label="Toggle menu"
+            aria-expanded="false">
+        ☰
+    </button>
+</nav>
+
+<header class="hero">
+    <h1>Build Skills. <span>Build Your Future.</span></h1>
+    <p>
+        Explore technology skills, learn what to study,
+        and discover career paths that match your interests.
+    </p>
+</header>
+
+<main>
+<section class="section">
+    <div class="section-heading">
+        <div>
+            <h2>Explore Technology Skills</h2>
+            <p>Choose a skill and start building your learning roadmap.</p>
+        </div>
+        <span class="skill-count" id="skillCount">9 skills</span>
+    </div>
+
+    <div class="category-list">
+        <button class="category-btn active" data-category="all">All Skills</button>
+        <button class="category-btn" data-category="web">Web Development</button>
+        <button class="category-btn" data-category="programming">Programming</button>
+        <button class="category-btn" data-category="data">Data &amp; Database</button>
+        <button class="category-btn" data-category="design">Design</button>
+    </div>
+
+    <div class="skills-grid" id="skillsGrid">
+
+        <article class="skill-card" data-category="web" data-search="html css web development frontend website">
+            <div class="skill-icon">🌐</div>
+            <h3>HTML &amp; CSS</h3>
+            <p>Learn to structure web pages and create responsive website layouts.</p>
+            <span class="level">Beginner Friendly</span>
+            <div class="learn-title">What to learn</div>
+            <div class="topics"><span>HTML5</span><span>CSS3</span><span>Flexbox</span><span>Responsive Design</span></div>
+            <a href="internship.html" class="skill-link">Explore Internships</a>
+        </article>
+
+        <article class="skill-card" data-category="web" data-search="javascript frontend web programming dom events">
+            <div class="skill-icon">⚡</div>
+            <h3>JavaScript</h3>
+            <p>Add interactive features to websites and work with dynamic content.</p>
+            <span class="level">Beginner to Intermediate</span>
+            <div class="learn-title">What to learn</div>
+            <div class="topics"><span>Variables</span><span>Functions</span><span>DOM</span><span>Events</span></div>
+            <a href="internship.html" class="skill-link">Explore Internships</a>
+        </article>
+
+        <article class="skill-card" data-category="web" data-search="bootstrap responsive frontend css framework">
+            <div class="skill-icon">📱</div>
+            <h3>Bootstrap</h3>
+            <p>Build responsive websites using a grid system and reusable components.</p>
+            <span class="level">Beginner Friendly</span>
+            <div class="learn-title">What to learn</div>
+            <div class="topics"><span>Grid System</span><span>Navbar</span><span>Cards</span><span>Forms</span></div>
+            <a href="internship.html" class="skill-link">Explore Internships</a>
+        </article>
+
+        <article class="skill-card" data-category="programming" data-search="python programming backend automation">
+            <div class="skill-icon">🐍</div>
+            <h3>Python</h3>
+            <p>Learn programming fundamentals and build scripts and applications.</p>
+            <span class="level">Beginner Friendly</span>
+            <div class="learn-title">What to learn</div>
+            <div class="topics"><span>Variables</span><span>Loops</span><span>Functions</span><span>OOP</span></div>
+            <a href="internship.html" class="skill-link">Explore Internships</a>
+        </article>
+
+        <article class="skill-card" data-category="programming" data-search="flask python backend api web development">
+            <div class="skill-icon">⚙️</div>
+            <h3>Backend Development</h3>
+            <p>Understand servers, routes, APIs, and databases behind a website.</p>
+            <span class="level">Intermediate</span>
+            <div class="learn-title">What to learn</div>
+            <div class="topics"><span>Flask</span><span>REST APIs</span><span>Authentication</span><span>CRUD</span></div>
+            <a href="internship.html" class="skill-link">Explore Internships</a>
+        </article>
+
+        <article class="skill-card" data-category="data" data-search="sql mysql database queries data">
+            <div class="skill-icon">🗄️</div>
+            <h3>SQL &amp; Databases</h3>
+            <p>Store, retrieve, update, and manage information using databases.</p>
+            <span class="level">Beginner Friendly</span>
+            <div class="learn-title">What to learn</div>
+            <div class="topics"><span>SELECT</span><span>JOIN</span><span>GROUP BY</span><span>MySQL</span></div>
+            <a href="internship.html" class="skill-link">Explore Internships</a>
+        </article>
+
+        <article class="skill-card" data-category="data" data-search="data science analytics python pandas visualization">
+            <div class="skill-icon">📊</div>
+            <h3>Data Science</h3>
+            <p>Explore data analysis, data cleaning, and visualisation.</p>
+            <span class="level">Intermediate</span>
+            <div class="learn-title">What to learn</div>
+            <div class="topics"><span>Python</span><span>Pandas</span><span>Statistics</span><span>Charts</span></div>
+            <a href="internship.html" class="skill-link">Explore Internships</a>
+        </article>
+
+        <article class="skill-card" data-category="design" data-search="ui ux design user interface experience figma">
+            <div class="skill-icon">🎨</div>
+            <h3>UI/UX Design</h3>
+            <p>Design user-friendly digital experiences through research and prototyping.</p>
+            <span class="level">Beginner Friendly</span>
+            <div class="learn-title">What to learn</div>
+            <div class="topics"><span>Wireframes</span><span>Figma</span><span>Prototypes</span><span>User Research</span></div>
+            <a href="internship.html" class="skill-link">Explore Internships</a>
+        </article>
+
+        <article class="skill-card" data-category="programming" data-search="git github version control collaboration code">
+            <div class="skill-icon">💻</div>
+            <h3>Git &amp; GitHub</h3>
+            <p>Track code changes, manage projects, and collaborate with developers.</p>
+            <span class="level">Beginner Friendly</span>
+            <div class="learn-title">What to learn</div>
+            <div class="topics"><span>Git</span><span>Commits</span><span>Branches</span><span>Pull Requests</span></div>
+            <a href="internship.html" class="skill-link">Explore Internships</a>
+        </article>
+
+        <div class="empty-state" id="emptyState">
+            <h3>No matching skills found</h3>
+            <p>Try another keyword or choose a different category.</p>
+        </div>
+    </div>
+</section>
+
+<section class="career-section">
+    <div class="career-content">
+        <h2>Choose Your Learning Path</h2>
+        <p>Explore possible learning sequences for different technology careers.</p>
+
+        <div class="career-grid">
+            <div class="career-item">
+                <h3>🌐 Frontend Developer</h3>
+                <p>Learn HTML, CSS, JavaScript, responsive design, and build portfolio projects.</p>
+                <a href="internship.html">Find Related Internships →</a>
+            </div>
+            <div class="career-item">
+                <h3>🐍 Python Developer</h3>
+                <p>Learn Python fundamentals, practise SQL, build projects with Flask, and understand APIs.</p>
+                <a href="internship.html">Find Related Internships →</a>
+            </div>
+            <div class="career-item">
+                <h3>📊 Data Analyst</h3>
+                <p>Learn SQL, spreadsheets, data cleaning, and data visualisation.</p>
+                <a href="internship.html">Find Related Internships →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Ready to Practise Your Skills?</h2>
+    <p>Explore internships that may match your interests and current skills.</p>
+    <a href="internship.html">Browse Internships</a>
+</section>
+</main>
+
+<footer>
+    <p>© 2026 SkillFinder. Learn skills. Build projects. Explore opportunities.</p>
+</footer>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+function menuOpen() {
+    navLinks.classList.toggle("active");
+
+    const isOpen = navLinks.classList.contains("active");
+    menuToggle.textContent = isOpen ? "✕" : "☰";
+    menuToggle.setAttribute("aria-expanded", isOpen);
+}
+
+navLinks.querySelectorAll("a").forEach(function(link) {
+    link.addEventListener("click", function() {
+        navLinks.classList.remove("active");
+        menuToggle.textContent = "☰";
+        menuToggle.setAttribute("aria-expanded", "false");
+    });
+});
+
+const searchInput = document.getElementById("skillSearch");
+const searchButton = document.getElementById("searchButton");
+const categoryButtons = document.querySelectorAll(".category-btn");
+const skillCards = document.querySelectorAll(".skill-card");
+const skillCount = document.getElementById("skillCount");
+const emptyState = document.getElementById("emptyState");
+
+let selectedCategory = "all";
+
+function filterSkills() {
+    const keyword = searchInput
+        ? searchInput.value.toLowerCase().trim()
+        : "";
+
+    let visibleCount = 0;
+
+    skillCards.forEach(function(card) {
+        const searchableText =
+            (card.dataset.search + " " + card.innerText).toLowerCase();
+
+        const matchesCategory =
+            selectedCategory === "all" ||
+            card.dataset.category === selectedCategory;
+
+        const matchesSearch = searchableText.includes(keyword);
+        const isVisible = matchesCategory && matchesSearch;
+
+        card.style.display = isVisible ? "flex" : "none";
+
+        if (isVisible) {
+            visibleCount++;
+        }
+    });
+
+    skillCount.textContent = visibleCount + " skills";
+    emptyState.style.display = visibleCount === 0 ? "block" : "none";
+}
+
+categoryButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        categoryButtons.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        selectedCategory = button.dataset.category;
+        filterSkills();
+    });
+});
+
+if (searchInput) {
+    searchInput.addEventListener("input", filterSkills);
+
+    searchInput.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            filterSkills();
+        }
+    });
+}
+
+if (searchButton) {
+    searchButton.addEventListener("click", filterSkills);
+}
+
+filterSkills();
+</script>
+
+</body>
+</html>

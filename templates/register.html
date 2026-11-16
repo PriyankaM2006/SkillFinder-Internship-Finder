@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillFinder - Register</title>
+    <link rel="stylesheet" href="../static/register.css">
+</head>
+<body>
+
+<nav class="navbar">
+
+    <a href="./index.html" class="logo">SKILLFINDER</a>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="./internship.html">Internships</a></li>
+        <!-- <li><a href="skills.html">Skills</a></li> -->
+        
+
+        <div class="mobile-menu">
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <!-- <a href="index.html#employers">For Employers</a> -->
+        </div>
+    </ul>
+
+    <div class="nav-buttons">
+        <a href="login.html" class="login">Login</a>
+        <a href="register.html" class="register">Register</a>
+        <!-- <a href="index.html#employers" class="employer">For Employers</a> -->
+    </div>
+
+    <div class="menu" onclick="menuOpen()">☰</div>
+
+</nav>
+
+<section class="register-container">
+
+    <div class="register-card">
+
+        <h2>Create an Account</h2>
+        <p>Register to find internships that match your skills.</p>
+
+        <form id="registerForm">
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name"
+                   placeholder="Enter your full name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email"
+                   placeholder="Enter your email" required>
+
+            <label for="phone">Mobile Number</label>
+            <input type="tel" id="phone"
+                   placeholder="Enter your mobile number"
+                   pattern="[0-9]{10}" maxlength="10" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password"
+                   placeholder="Create a password"
+                   minlength="8" required>
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword"
+                   placeholder="Enter your password again"
+                   minlength="8" required>
+
+            <button type="submit" class="register-submit">
+                Create Account
+            </button>
+
+            <p class="login-text">
+                Already have an account?
+                <a href="login.html">Login</a>
+            </p>
+
+            <p class="home-text">
+                <a href="./index.html">← Back to Home</a>
+            </p>
+
+        </form>
+
+    </div>
+
+</section>
+
+<script>
+
+document.getElementById("registerForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    var name = document.getElementById("name").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var phone = document.getElementById("phone").value.trim();
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+    }
+
+    var user = {
+        name: name,
+        email: email,
+        phone: phone
+    };
+
+    localStorage.setItem("skillfinderUser", JSON.stringify(user));
+
+    alert("Registration successful!");
+
+    window.location.href = "profile.html";
+});
+
+</script>
+
+</body>
+</html>

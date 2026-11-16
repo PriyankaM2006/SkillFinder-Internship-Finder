@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | SkillFinder</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Times New Roman", serif;
+            min-height: 100vh;
+            background: #f8f9fc;
+            color: #222;
+        }
+
+        .admin-section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #edf4ff, #fff0fa);
+        }
+
+        .admin-card {
+            width: 100%;
+            max-width: 420px;
+            padding: 38px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.09);
+        }
+
+        .admin-icon {
+            width: 62px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: linear-gradient(110deg, #e40d9c, #f5dd07);
+            font-size: 28px;
+        }
+
+        .admin-card h1 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: "Times New Roman", serif;
+            font-size: 16px;
+            outline: none;
+            background: #fff;
+        }
+
+        .form-group input:focus {
+            border-color: #e40d9c;
+            box-shadow: 0 0 4px rgba(228, 13, 156, 0.15);
+        }
+
+        .admin-btn {
+            width: 100%;
+            padding: 13px;
+            margin-top: 5px;
+            background: linear-gradient(110deg, #e40d9c, #f5dd07);
+            border: none;
+            border-radius: 5px;
+            font-family: "Times New Roman", serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: #111;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .admin-btn:hover {
+            opacity: 0.85;
+        }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 22px;
+            color: #c20a83;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .back-home:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .admin-card {
+                padding: 28px 22px;
+            }
+
+            .admin-card h1 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="admin-section">
+        <div class="admin-card">
+
+            <div class="admin-icon">🔐</div>
+
+            <h1>Admin Login</h1>
+
+            <p class="subtitle">
+                Sign in to manage your SkillFinder platform.
+            </p>
+
+            <form id="adminForm">
+
+                <div class="form-group">
+                    <label for="adminEmail">Admin Email</label>
+                    <input
+                        type="email"
+                        id="adminEmail"
+                        placeholder="Enter admin email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <input
+                        type="password"
+                        id="adminPassword"
+                        placeholder="Enter password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="admin-btn">
+                    Login as Admin
+                </button>
+
+            </form>
+
+            <a href="index.html" class="back-home">
+                &#8592; Back to Home
+            </a>
+
+        </div>
+    </section>
+
+  <script>
+document.getElementById("adminForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("adminEmail").value;
+    const password = document.getElementById("adminPassword").value;
+
+    if (email === "priyankameiyan@gmail.com" && password === "priya123") {
+        window.location.href = "hj.html";
+    } else {
+        alert("Invalid admin email or password!");
+    }
+});
+</script>
+
+</body>
+</html>

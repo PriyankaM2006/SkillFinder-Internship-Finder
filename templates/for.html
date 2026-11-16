@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password - SkillFinder</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: Arial, sans-serif;
+            width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: #f5f5f5;
+        }
+
+        .login-container {
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 430px;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .login-heading {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .login-heading h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .login-heading p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        #resetForm {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #resetForm label {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        #resetForm input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        #resetForm input:focus {
+            border-color: #e40d9c;
+        }
+
+        .login-submit {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 6px;
+            background: linear-gradient(110deg, #e40d9c, #f5dd07);
+            color: #222;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-submit:hover {
+            background: #f7296e;
+        }
+
+        .back-login {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #d20b8d;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .login-footer {
+            border-top: 1px solid #eee;
+            margin-top: 25px;
+            padding-top: 18px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 25px 20px;
+            }
+
+            .login-heading h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="login-container">
+
+        <div class="login-card">
+
+            <div class="login-heading">
+                <h1>Forgot Password?</h1>
+                <p>Enter your new password to continue.</p>
+            </div>
+
+            <form id="resetForm">
+
+                <label for="newPassword">New Password</label>
+                <input
+                    type="password"
+                    id="newPassword"
+                    placeholder="Enter your new password"
+                    minlength="8"
+                    autocomplete="new-password"
+                    required
+                >
+
+                <label for="confirmPassword">Re-enter New Password</label>
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Re-enter your new password"
+                    minlength="8"
+                    autocomplete="new-password"
+                    required
+                >
+
+                <button type="submit" class="login-submit">
+                    Reset Password
+                </button>
+
+            </form>
+
+            <a href="login.html" class="back-login">
+                Back to Login
+            </a>
+
+            <div class="login-footer">
+                <p>Find internships. Build skills. Grow your career.</p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        document.getElementById("resetForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var newPassword = document.getElementById("newPassword").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (newPassword.length < 8) {
+                alert("Password must contain at least 8 characters.");
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            alert("Passwords match! Connect your backend to save the new password.");
+        });
+    </script>
+
+</body>
+</html>

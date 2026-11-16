@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <style>
+            *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    font-family:Arial,sans-serif;
+    width:100%;
+    overflow-x:hidden;
+}
+
+    .navbar{
+    width:100%;
+    height:70px;
+    display:flex;
+    align-items:center;
+    padding:0 5%;
+    background:linear-gradient(110deg,#e40d9c,#f5dd07);
+    box-shadow:0 2px 10px rgba(0,0,0,0.2);
+    position:relative;
+    z-index:1000;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:#111;
+    margin-right:50px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#222;
+    font-size:15px;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:#e40d9c;
+}
+
+.search{
+    margin-left:auto;
+    width:125px;
+    height:38px;
+    border:1px solid #333;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#111;
+}
+
+.login{
+    margin-left:20px;
+    padding:9px 25px;
+    border:1px solid #071b24;
+    border-radius:5px;
+    color:#111;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.register{
+    margin-left:15px;
+    padding:10px 25px;
+    background:#f7296e;
+    color:#111;
+    border-radius:5px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.employer{
+    margin-left:30px;
+    color:#111;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.menu{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.mobile-menu{
+    display:none;
+}
+.hero{
+    min-height:590px;
+    display:flex;
+    align-items:center;
+    padding:70px 6%;
+    color:white;
+    position:relative;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(3,30,75,0.95),
+        rgba(4,72,135,0.78),
+        rgba(0,0,0,0.35)
+    ),
+    url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=85");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    width:58%;
+    position:relative;
+    z-index:2;
+}
+
+.hero h1{
+    font-size:52px;
+    line-height:1.15;
+    margin-bottom:20px;
+}
+
+        </style>
+    </head><body></body>
+    <nav class="navbar">
+
+    <div class="logo">
+        SKILLFINDER
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="internships.html">Internships ▾</a>
+        </li>
+
+        <li>
+            <a href="skills.html">Skills ▾</a>
+        </li>
+
+        <li>
+            <a href="courses.html">Courses</a>
+        </li>
+
+        <div class="mobile-menu">
+
+            <a href="login.html" class="mobile-login">
+                Login
+            </a>
+
+            <a href="register.html" class="mobile-register">
+                Register
+            </a>
+
+            <a href="#" class="mobile-employer">
+                For Employers
+            </a>
+        </div>
+    </ul>
+
+    <div class="search"> 
+        🔍 Search
+    </div>
+
+    <a href="login.html" class="login">
+        Login
+    </a>
+
+    <a href="register.html" class="register">
+        Register
+    </a>
+
+    <a href="#" class="employer">
+        For Employers
+    </a>
+
+    <div class="menu" onclick="menuOpen()">
+        ☰
+    </div>
+
+</nav>
+</body>
+</html>

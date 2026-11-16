@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillFinder - Login</title>
+    <link rel="stylesheet" href="../static/login.css">
+</head>
+
+<body class="login-page">
+
+
+<nav class="navbar">
+    <a href="index.html" class="logo">SKILLFINDER</a>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="internship.html">Internships ▾</a></li>
+        <!-- <li><a href="skills.html">Skills ▾</a></li> -->
+       
+
+        <li class="mobile-menu">
+            <a href="login.html" class="mobile-login">Login</a>
+            <a href="register.html" class="mobile-register">Register</a>
+            <!-- <a href="#employers" class="mobile-employer">For Employers</a> -->
+        </li>
+    </ul>
+
+    <div class="nav-buttons">
+        <a href="login.html" class="login">Login</a>
+        <a href="register.html" class="register">Register</a>
+        <!-- <a href="#employers" class="employer">For Employers</a> -->
+    </div>
+
+    <button class="menu" onclick="menuOpen()" aria-label="Toggle menu">
+        ☰
+    </button>
+</nav>
+
+<script>
+function menuOpen() {
+    document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
+
+
+<main class="login-container">
+
+    <div class="login-card">
+
+        <div class="login-heading">
+            <h1>Welcome Back!</h1>
+            <p>Login to discover your next career opportunity.</p>
+        </div>
+
+        <form id="loginForm">
+
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                minlength="8"
+                required
+            >
+
+            <div class="login-options">
+                <label class="remember">
+                    <input type="checkbox" id="remember">
+                    Remember me
+                </label>
+
+                <a href="for.html">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="login-submit">
+                Login
+            </button>
+
+            <p class="register-text">
+                Don't have an account?
+                <a href="register.html">Create an account</a>
+            </p>
+
+        </form>
+
+        <div class="login-footer">
+            <p>Find internships. Build skills. Grow your career.</p>
+        </div>
+
+    </div>
+
+</main>
+
+<script>
+function menuOpen() {
+    document.getElementById("navLinks").classList.toggle("active");
+}
+
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    alert("Login form submitted. Connect a backend to verify your account.");
+});
+</script>
+
+</body>
+</html>
